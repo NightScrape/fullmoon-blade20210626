@@ -9,6 +9,8 @@ public class EnemyBase : MonoBehaviour
     public float Mana = 12;
     [Header("抽牌數"),Tooltip("怪物每回合開始抽取手牌，直到與該數字相同"),Range(0,6)]
     public int CardDraw = 2;
+    [Header("怪物等級"),Range(1,10)]
+    public int EnemyLevel = 1; 
     #endregion
     #region 事件
     #endregion
