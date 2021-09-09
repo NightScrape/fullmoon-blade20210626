@@ -16,27 +16,23 @@ public class MainCharacterBase : MonoBehaviour
     [Header("血量上限"), Tooltip("當前血量不會超過最大值")]
     public float HpMax;
     [Header("初始魔力"), Tooltip("角色進入遊戲後擁有的初始魔力，在戰鬥結束後回到原數值"), Range(0, 100)]
-    public float ManaOrigin = 8;
+    public float ManaOrigin = 5;
     [Header("當前魔力")]
     public float ManaCurrent;
     [Header("當前初始魔力"), Tooltip("戰鬥結束後調回原值")]
     public float ManaMax;
-    [Header("手牌上限"), Range(1, 20)]
-    public int DrawLimit = 3;
     [Header("等級"), Range(1, 11)]
     public int Level = 1;
     [Header("經驗值")]
     public int Experience;
     [Header("持有金錢")]
     public int gold;
-    [Header("角色技能冷卻"), Tooltip("在經過多少戰鬥數後為0，角色技能冷卻為0時可以發動對應的技能"), Range(0, 10)]
-    public int SkillCooldown = 5; //若角色持有的技能為被動，則改為0
     #endregion
     #region 公開欄位 其他
     [Header("血量成長"), Tooltip("角色每次升級後獲得對應的血量上限"), Range(0, 50)]
     public float HpAdd = 10;
-    [Header("升級魔力增強"), Tooltip("因為升級而增加的魔力會加到原有的初始魔力值，增強部分不因戰鬥結束而消失"), Range(0, 30)]
-    public float ManaAdd = 8;
+    [Header("手牌上限"), Range(1, 8)]
+    public int DrawLimit = 4;
     [Header("升級所需經驗值"), Tooltip("當前經驗值超過升級所需，則會減少相應值升級")]  //構思資料矩陣化中
     public int ExpNeeded;
     #endregion
@@ -71,7 +67,6 @@ public class MainCharacterBase : MonoBehaviour
         Experience = Experience - ExpNeeded;
         Level++;
         HpCurrent = HpMax = HpOrigin + HpAdd * Level;
-        ManaCurrent = ManaMax = ManaOrigin + ManaAdd * Level;
     }
     public void Hurt()
     {

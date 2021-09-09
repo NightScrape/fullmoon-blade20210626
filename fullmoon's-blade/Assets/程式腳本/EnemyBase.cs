@@ -3,14 +3,18 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     #region 欄位
-    [Header("血量"), Tooltip("怪物戰鬥後擁有的血量"), Range(50, 300)]
+    [Header("血量"), Tooltip("怪物戰鬥後擁有的血量"), Range(0, 500)]
     public float Hp = 32;
-    [Header("魔力"), Tooltip("怪物入場時獲得的魔力"), Range(0, 100)]
-    public float Mana = 12;
+    [Header("血量上限"), Tooltip("當前血量不會超過最大值")]
+    public float HpMax;
     [Header("抽牌數"),Tooltip("怪物每回合開始抽取手牌，直到與該數字相同"),Range(0,6)]
     public int CardDraw = 2;
     [Header("怪物等級"),Range(1,10)]
-    public int EnemyLevel = 1; 
+    public int EnemyLevel = 1;
+    enum Action
+    {
+        instantAttack,delayedAttack,armor,recover,wait
+    }
     #endregion
     #region 事件
     #endregion
